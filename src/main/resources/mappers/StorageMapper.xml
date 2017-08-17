@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.StorageMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Storage" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="StorageLength" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Width" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Height" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Action" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsForbid" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="IsDefault" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, StorageNum, StorageName, StorageType, StorageLength, Width, Height, Action, IsDelete, 
+    Status, IsForbid, IsDefault, CreateTime, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from storage
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from storage
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Storage" >
+    insert into storage (ID, StorageNum, StorageName, 
+      StorageType, StorageLength, Width, 
+      Height, Action, IsDelete, 
+      Status, IsForbid, IsDefault, 
+      CreateTime, Remark)
+    values (#{id,jdbcType=INTEGER}, #{storagenum,jdbcType=VARCHAR}, #{storagename,jdbcType=VARCHAR}, 
+      #{storagetype,jdbcType=INTEGER}, #{storagelength,jdbcType=DOUBLE}, #{width,jdbcType=DOUBLE}, 
+      #{height,jdbcType=DOUBLE}, #{action,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{isforbid,jdbcType=BIT}, #{isdefault,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Storage" >
+    insert into storage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="storagename != null" >
+        StorageName,
+      </if>
+      <if test="storagetype != null" >
+        StorageType,
+      </if>
+      <if test="storagelength != null" >
+        StorageLength,
+      </if>
+      <if test="width != null" >
+        Width,
+      </if>
+      <if test="height != null" >
+        Height,
+      </if>
+      <if test="action != null" >
+        Action,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="isforbid != null" >
+        IsForbid,
+      </if>
+      <if test="isdefault != null" >
+        IsDefault,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagename != null" >
+        #{storagename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null" >
+        #{storagetype,jdbcType=INTEGER},
+      </if>
+      <if test="storagelength != null" >
+        #{storagelength,jdbcType=DOUBLE},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="action != null" >
+        #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isforbid != null" >
+        #{isforbid,jdbcType=BIT},
+      </if>
+      <if test="isdefault != null" >
+        #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Storage" >
+    update storage
+    <set >
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagename != null" >
+        StorageName = #{storagename,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null" >
+        StorageType = #{storagetype,jdbcType=INTEGER},
+      </if>
+      <if test="storagelength != null" >
+        StorageLength = #{storagelength,jdbcType=DOUBLE},
+      </if>
+      <if test="width != null" >
+        Width = #{width,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null" >
+        Height = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="action != null" >
+        Action = #{action,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="isforbid != null" >
+        IsForbid = #{isforbid,jdbcType=BIT},
+      </if>
+      <if test="isdefault != null" >
+        IsDefault = #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Storage" >
+    update storage
+    set StorageNum = #{storagenum,jdbcType=VARCHAR},
+      StorageName = #{storagename,jdbcType=VARCHAR},
+      StorageType = #{storagetype,jdbcType=INTEGER},
+      StorageLength = #{storagelength,jdbcType=DOUBLE},
+      Width = #{width,jdbcType=DOUBLE},
+      Height = #{height,jdbcType=DOUBLE},
+      Action = #{action,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      IsForbid = #{isforbid,jdbcType=BIT},
+      IsDefault = #{isdefault,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from storage
+  </select>
+
+  <select id="checkId" resultType="int" parameterType="java.lang.Integer">
+    SELECT COUNT(1) FROM storage
+    WHERE ID = #{id,jdbcType=INTEGER}
+  </select>
+
+</mapper>

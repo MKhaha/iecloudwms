@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.BadReportDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.BadReportDetail" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SnNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BatchNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="InPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Amount" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FromLocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ToLocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SnNum, OrderNum, ProductName, BarCode, ProductNum, BatchNum, Num, InPrice, Amount, 
+    CreateTime, StorageNum, FromLocalNum, ToLocalNum
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bad_report_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bad_report_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReportDetail" >
+    insert into bad_report_detail (ID, SnNum, OrderNum, 
+      ProductName, BarCode, ProductNum, 
+      BatchNum, Num, InPrice, 
+      Amount, CreateTime, StorageNum, 
+      FromLocalNum, ToLocalNum)
+    values (#{id,jdbcType=INTEGER}, #{snnum,jdbcType=VARCHAR}, #{ordernum,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, #{productnum,jdbcType=VARCHAR}, 
+      #{batchnum,jdbcType=VARCHAR}, #{num,jdbcType=DOUBLE}, #{inprice,jdbcType=DOUBLE}, 
+      #{amount,jdbcType=DOUBLE}, #{createtime,jdbcType=TIMESTAMP}, #{storagenum,jdbcType=VARCHAR}, 
+      #{fromlocalnum,jdbcType=VARCHAR}, #{tolocalnum,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReportDetail" >
+    insert into bad_report_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="snnum != null" >
+        SnNum,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productnum != null" >
+        ProductNum,
+      </if>
+      <if test="batchnum != null" >
+        BatchNum,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="inprice != null" >
+        InPrice,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="fromlocalnum != null" >
+        FromLocalNum,
+      </if>
+      <if test="tolocalnum != null" >
+        ToLocalNum,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snnum != null" >
+        #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="inprice != null" >
+        #{inprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="fromlocalnum != null" >
+        #{fromlocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="tolocalnum != null" >
+        #{tolocalnum,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReportDetail" >
+    update bad_report_detail
+    <set >
+      <if test="snnum != null" >
+        SnNum = #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        ProductNum = #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        BatchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="inprice != null" >
+        InPrice = #{inprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="fromlocalnum != null" >
+        FromLocalNum = #{fromlocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="tolocalnum != null" >
+        ToLocalNum = #{tolocalnum,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReportDetail" >
+    update bad_report_detail
+    set SnNum = #{snnum,jdbcType=VARCHAR},
+      OrderNum = #{ordernum,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductNum = #{productnum,jdbcType=VARCHAR},
+      BatchNum = #{batchnum,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      InPrice = #{inprice,jdbcType=DOUBLE},
+      Amount = #{amount,jdbcType=DOUBLE},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      FromLocalNum = #{fromlocalnum,jdbcType=VARCHAR},
+      ToLocalNum = #{tolocalnum,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

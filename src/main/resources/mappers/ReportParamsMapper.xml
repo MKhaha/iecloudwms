@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.ReportParamsMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.ReportParams" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ParamNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ReportNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="InputNo" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParamName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ShowName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParamType" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParamData" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DefaultValue" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParamElement" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ParamNum, ReportNum, InputNo, ParamName, ShowName, ParamType, ParamData, DefaultValue, 
+    ParamElement, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from report_params
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from report_params
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ReportParams" >
+    insert into report_params (ID, ParamNum, ReportNum, 
+      InputNo, ParamName, ShowName, 
+      ParamType, ParamData, DefaultValue, 
+      ParamElement, Remark)
+    values (#{id,jdbcType=INTEGER}, #{paramnum,jdbcType=VARCHAR}, #{reportnum,jdbcType=VARCHAR}, 
+      #{inputno,jdbcType=VARCHAR}, #{paramname,jdbcType=VARCHAR}, #{showname,jdbcType=VARCHAR}, 
+      #{paramtype,jdbcType=VARCHAR}, #{paramdata,jdbcType=VARCHAR}, #{defaultvalue,jdbcType=VARCHAR}, 
+      #{paramelement,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ReportParams" >
+    insert into report_params
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="paramnum != null" >
+        ParamNum,
+      </if>
+      <if test="reportnum != null" >
+        ReportNum,
+      </if>
+      <if test="inputno != null" >
+        InputNo,
+      </if>
+      <if test="paramname != null" >
+        ParamName,
+      </if>
+      <if test="showname != null" >
+        ShowName,
+      </if>
+      <if test="paramtype != null" >
+        ParamType,
+      </if>
+      <if test="paramdata != null" >
+        ParamData,
+      </if>
+      <if test="defaultvalue != null" >
+        DefaultValue,
+      </if>
+      <if test="paramelement != null" >
+        ParamElement,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="paramnum != null" >
+        #{paramnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reportnum != null" >
+        #{reportnum,jdbcType=VARCHAR},
+      </if>
+      <if test="inputno != null" >
+        #{inputno,jdbcType=VARCHAR},
+      </if>
+      <if test="paramname != null" >
+        #{paramname,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null" >
+        #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="paramtype != null" >
+        #{paramtype,jdbcType=VARCHAR},
+      </if>
+      <if test="paramdata != null" >
+        #{paramdata,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultvalue != null" >
+        #{defaultvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramelement != null" >
+        #{paramelement,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ReportParams" >
+    update report_params
+    <set >
+      <if test="paramnum != null" >
+        ParamNum = #{paramnum,jdbcType=VARCHAR},
+      </if>
+      <if test="reportnum != null" >
+        ReportNum = #{reportnum,jdbcType=VARCHAR},
+      </if>
+      <if test="inputno != null" >
+        InputNo = #{inputno,jdbcType=VARCHAR},
+      </if>
+      <if test="paramname != null" >
+        ParamName = #{paramname,jdbcType=VARCHAR},
+      </if>
+      <if test="showname != null" >
+        ShowName = #{showname,jdbcType=VARCHAR},
+      </if>
+      <if test="paramtype != null" >
+        ParamType = #{paramtype,jdbcType=VARCHAR},
+      </if>
+      <if test="paramdata != null" >
+        ParamData = #{paramdata,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultvalue != null" >
+        DefaultValue = #{defaultvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="paramelement != null" >
+        ParamElement = #{paramelement,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ReportParams" >
+    update report_params
+    set ParamNum = #{paramnum,jdbcType=VARCHAR},
+      ReportNum = #{reportnum,jdbcType=VARCHAR},
+      InputNo = #{inputno,jdbcType=VARCHAR},
+      ParamName = #{paramname,jdbcType=VARCHAR},
+      ShowName = #{showname,jdbcType=VARCHAR},
+      ParamType = #{paramtype,jdbcType=VARCHAR},
+      ParamData = #{paramdata,jdbcType=VARCHAR},
+      DefaultValue = #{defaultvalue,jdbcType=VARCHAR},
+      ParamElement = #{paramelement,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

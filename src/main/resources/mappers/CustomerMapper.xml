@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.CustomerMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Customer" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CusNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Fax" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, CusNum, CusName, Phone, Email, Fax, Address, CusType, IsDelete, CreateTime, CreateUser, 
+    Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from customer
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from customer
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Customer" >
+    insert into customer (ID, CusNum, CusName, 
+      Phone, Email, Fax, 
+      Address, CusType, IsDelete, 
+      CreateTime, CreateUser, Remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{cusnum,jdbcType=VARCHAR}, #{cusname,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{custype,jdbcType=INTEGER}, #{isdelete,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Customer" >
+    insert into customer
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="cusnum != null" >
+        CusNum,
+      </if>
+      <if test="cusname != null" >
+        CusName,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="fax != null" >
+        Fax,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="custype != null" >
+        CusType,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cusnum != null" >
+        #{cusnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null" >
+        #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="custype != null" >
+        #{custype,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Customer" >
+    update customer
+    <set >
+      <if test="cusnum != null" >
+        CusNum = #{cusnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null" >
+        CusName = #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        Fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="custype != null" >
+        CusType = #{custype,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Customer" >
+    update customer
+    set CusNum = #{cusnum,jdbcType=VARCHAR},
+      CusName = #{cusname,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Fax = #{fax,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      CusType = #{custype,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

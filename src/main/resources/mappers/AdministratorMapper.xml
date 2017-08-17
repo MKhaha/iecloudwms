@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.AdministratorMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Administrator" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="UserName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PassWord" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UserCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RealName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Mobile" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateIp" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LoginCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Picture" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UpdateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DepartNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParentCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RoleNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, UserName, PassWord, UserCode, RealName, Email, Mobile, Phone, CreateTime, CreateIp, 
+    CreateUser, LoginCount, Picture, UpdateTime, IsDelete, Status, DepartNum, ParentCode, 
+    RoleNum, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from administrator
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from administrator
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Administrator" >
+    insert into administrator (ID, UserName, PassWord, 
+      UserCode, RealName, Email, 
+      Mobile, Phone, CreateTime, 
+      CreateIp, CreateUser, LoginCount, 
+      Picture, UpdateTime, IsDelete, 
+      Status, DepartNum, ParentCode, 
+      RoleNum, Remark)
+    values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
+      #{usercode,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{mobile,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createip,jdbcType=VARCHAR}, #{createuser,jdbcType=VARCHAR}, #{logincount,jdbcType=INTEGER}, 
+      #{picture,jdbcType=VARCHAR}, #{updatetime,jdbcType=TIMESTAMP}, #{isdelete,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER}, #{departnum,jdbcType=VARCHAR}, #{parentcode,jdbcType=VARCHAR}, 
+      #{rolenum,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Administrator" >
+    insert into administrator
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="username != null" >
+        UserName,
+      </if>
+      <if test="password != null" >
+        PassWord,
+      </if>
+      <if test="usercode != null" >
+        UserCode,
+      </if>
+      <if test="realname != null" >
+        RealName,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="mobile != null" >
+        Mobile,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createip != null" >
+        CreateIp,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="logincount != null" >
+        LoginCount,
+      </if>
+      <if test="picture != null" >
+        Picture,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="departnum != null" >
+        DepartNum,
+      </if>
+      <if test="parentcode != null" >
+        ParentCode,
+      </if>
+      <if test="rolenum != null" >
+        RoleNum,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null" >
+        #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createip != null" >
+        #{createip,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null" >
+        #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="departnum != null" >
+        #{departnum,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null" >
+        #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rolenum != null" >
+        #{rolenum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Administrator" >
+    update administrator
+    <set >
+      <if test="username != null" >
+        UserName = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null" >
+        PassWord = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="usercode != null" >
+        UserCode = #{usercode,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        RealName = #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null" >
+        Mobile = #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createip != null" >
+        CreateIp = #{createip,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="logincount != null" >
+        LoginCount = #{logincount,jdbcType=INTEGER},
+      </if>
+      <if test="picture != null" >
+        Picture = #{picture,jdbcType=VARCHAR},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="departnum != null" >
+        DepartNum = #{departnum,jdbcType=VARCHAR},
+      </if>
+      <if test="parentcode != null" >
+        ParentCode = #{parentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="rolenum != null" >
+        RoleNum = #{rolenum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Administrator" >
+    update administrator
+    set UserName = #{username,jdbcType=VARCHAR},
+      PassWord = #{password,jdbcType=VARCHAR},
+      UserCode = #{usercode,jdbcType=VARCHAR},
+      RealName = #{realname,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      Mobile = #{mobile,jdbcType=VARCHAR},
+      Phone = #{phone,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateIp = #{createip,jdbcType=VARCHAR},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      LoginCount = #{logincount,jdbcType=INTEGER},
+      Picture = #{picture,jdbcType=VARCHAR},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      DepartNum = #{departnum,jdbcType=VARCHAR},
+      ParentCode = #{parentcode,jdbcType=VARCHAR},
+      RoleNum = #{rolenum,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

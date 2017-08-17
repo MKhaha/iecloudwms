@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.SystemDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.SystemDepartment" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="DepartNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DepartName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ChildCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ParentNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DepartmentDepth" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, DepartNum, DepartName, ChildCount, ParentNum, DepartmentDepth, IsDelete, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_department
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from system_department
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemDepartment" >
+    insert into system_department (ID, DepartNum, DepartName, 
+      ChildCount, ParentNum, DepartmentDepth, 
+      IsDelete, CreateTime)
+    values (#{id,jdbcType=INTEGER}, #{departnum,jdbcType=VARCHAR}, #{departname,jdbcType=VARCHAR}, 
+      #{childcount,jdbcType=INTEGER}, #{parentnum,jdbcType=VARCHAR}, #{departmentdepth,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemDepartment" >
+    insert into system_department
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="departnum != null" >
+        DepartNum,
+      </if>
+      <if test="departname != null" >
+        DepartName,
+      </if>
+      <if test="childcount != null" >
+        ChildCount,
+      </if>
+      <if test="parentnum != null" >
+        ParentNum,
+      </if>
+      <if test="departmentdepth != null" >
+        DepartmentDepth,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="departnum != null" >
+        #{departnum,jdbcType=VARCHAR},
+      </if>
+      <if test="departname != null" >
+        #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="childcount != null" >
+        #{childcount,jdbcType=INTEGER},
+      </if>
+      <if test="parentnum != null" >
+        #{parentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentdepth != null" >
+        #{departmentdepth,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemDepartment" >
+    update system_department
+    <set >
+      <if test="departnum != null" >
+        DepartNum = #{departnum,jdbcType=VARCHAR},
+      </if>
+      <if test="departname != null" >
+        DepartName = #{departname,jdbcType=VARCHAR},
+      </if>
+      <if test="childcount != null" >
+        ChildCount = #{childcount,jdbcType=INTEGER},
+      </if>
+      <if test="parentnum != null" >
+        ParentNum = #{parentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentdepth != null" >
+        DepartmentDepth = #{departmentdepth,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemDepartment" >
+    update system_department
+    set DepartNum = #{departnum,jdbcType=VARCHAR},
+      DepartName = #{departname,jdbcType=VARCHAR},
+      ChildCount = #{childcount,jdbcType=INTEGER},
+      ParentNum = #{parentnum,jdbcType=VARCHAR},
+      DepartmentDepth = #{departmentdepth,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

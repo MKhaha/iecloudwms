@@ -1,0 +1,444 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.ProductMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Product" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SnNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="MinNum" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="MaxNum" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="UnitNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UnitName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CateNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductSize" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Color" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="InPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="OutPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="AvgPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="NetWeight" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="GrossWeight" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="PicUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DefaultLocal" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Display" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ywgroup.iecloud.iecloudwms.pojo.ProductWithBLOBs" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SnNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="MinNum" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="MaxNum" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="UnitNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UnitName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CateNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductSize" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Color" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="InPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="OutPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="AvgPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="NetWeight" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="GrossWeight" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="PicUrl" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="DefaultLocal" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CusName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Display" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Description" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SnNum, BarCode, ProductName, Num, MinNum, MaxNum, UnitNum, UnitName, CateNum, 
+    CateName, ProductSize, Color, InPrice, OutPrice, AvgPrice, NetWeight, GrossWeight, 
+    PicUrl, IsDelete, CreateTime, CreateUser, StorageNum, DefaultLocal, CusNum, CusName, 
+    Display
+  </sql>
+  <sql id="Blob_Column_List" >
+    Description, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from product
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from product
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ProductWithBLOBs" >
+    insert into product (ID, SnNum, BarCode, 
+      ProductName, Num, MinNum, 
+      MaxNum, UnitNum, UnitName, 
+      CateNum, CateName, ProductSize, 
+      Color, InPrice, OutPrice, 
+      AvgPrice, NetWeight, GrossWeight, 
+      PicUrl, IsDelete, CreateTime, 
+      CreateUser, StorageNum, DefaultLocal, 
+      CusNum, CusName, Display, 
+      Description, Remark)
+    values (#{id,jdbcType=INTEGER}, #{snnum,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{num,jdbcType=DOUBLE}, #{minnum,jdbcType=DOUBLE}, 
+      #{maxnum,jdbcType=DOUBLE}, #{unitnum,jdbcType=VARCHAR}, #{unitname,jdbcType=VARCHAR}, 
+      #{catenum,jdbcType=VARCHAR}, #{catename,jdbcType=VARCHAR}, #{productsize,jdbcType=VARCHAR}, 
+      #{color,jdbcType=VARCHAR}, #{inprice,jdbcType=DOUBLE}, #{outprice,jdbcType=DOUBLE}, 
+      #{avgprice,jdbcType=DOUBLE}, #{netweight,jdbcType=DOUBLE}, #{grossweight,jdbcType=DOUBLE}, 
+      #{picurl,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, #{defaultlocal,jdbcType=VARCHAR}, 
+      #{cusnum,jdbcType=VARCHAR}, #{cusname,jdbcType=VARCHAR}, #{display,jdbcType=VARCHAR}, 
+      #{description,jdbcType=LONGVARCHAR}, #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ProductWithBLOBs" >
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="snnum != null" >
+        SnNum,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="minnum != null" >
+        MinNum,
+      </if>
+      <if test="maxnum != null" >
+        MaxNum,
+      </if>
+      <if test="unitnum != null" >
+        UnitNum,
+      </if>
+      <if test="unitname != null" >
+        UnitName,
+      </if>
+      <if test="catenum != null" >
+        CateNum,
+      </if>
+      <if test="catename != null" >
+        CateName,
+      </if>
+      <if test="productsize != null" >
+        ProductSize,
+      </if>
+      <if test="color != null" >
+        Color,
+      </if>
+      <if test="inprice != null" >
+        InPrice,
+      </if>
+      <if test="outprice != null" >
+        OutPrice,
+      </if>
+      <if test="avgprice != null" >
+        AvgPrice,
+      </if>
+      <if test="netweight != null" >
+        NetWeight,
+      </if>
+      <if test="grossweight != null" >
+        GrossWeight,
+      </if>
+      <if test="picurl != null" >
+        PicUrl,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="defaultlocal != null" >
+        DefaultLocal,
+      </if>
+      <if test="cusnum != null" >
+        CusNum,
+      </if>
+      <if test="cusname != null" >
+        CusName,
+      </if>
+      <if test="display != null" >
+        Display,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snnum != null" >
+        #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="minnum != null" >
+        #{minnum,jdbcType=DOUBLE},
+      </if>
+      <if test="maxnum != null" >
+        #{maxnum,jdbcType=DOUBLE},
+      </if>
+      <if test="unitnum != null" >
+        #{unitnum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null" >
+        #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="catenum != null" >
+        #{catenum,jdbcType=VARCHAR},
+      </if>
+      <if test="catename != null" >
+        #{catename,jdbcType=VARCHAR},
+      </if>
+      <if test="productsize != null" >
+        #{productsize,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="inprice != null" >
+        #{inprice,jdbcType=DOUBLE},
+      </if>
+      <if test="outprice != null" >
+        #{outprice,jdbcType=DOUBLE},
+      </if>
+      <if test="avgprice != null" >
+        #{avgprice,jdbcType=DOUBLE},
+      </if>
+      <if test="netweight != null" >
+        #{netweight,jdbcType=DOUBLE},
+      </if>
+      <if test="grossweight != null" >
+        #{grossweight,jdbcType=DOUBLE},
+      </if>
+      <if test="picurl != null" >
+        #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultlocal != null" >
+        #{defaultlocal,jdbcType=VARCHAR},
+      </if>
+      <if test="cusnum != null" >
+        #{cusnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null" >
+        #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        #{display,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ProductWithBLOBs" >
+    update product
+    <set >
+      <if test="snnum != null" >
+        SnNum = #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="minnum != null" >
+        MinNum = #{minnum,jdbcType=DOUBLE},
+      </if>
+      <if test="maxnum != null" >
+        MaxNum = #{maxnum,jdbcType=DOUBLE},
+      </if>
+      <if test="unitnum != null" >
+        UnitNum = #{unitnum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null" >
+        UnitName = #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="catenum != null" >
+        CateNum = #{catenum,jdbcType=VARCHAR},
+      </if>
+      <if test="catename != null" >
+        CateName = #{catename,jdbcType=VARCHAR},
+      </if>
+      <if test="productsize != null" >
+        ProductSize = #{productsize,jdbcType=VARCHAR},
+      </if>
+      <if test="color != null" >
+        Color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="inprice != null" >
+        InPrice = #{inprice,jdbcType=DOUBLE},
+      </if>
+      <if test="outprice != null" >
+        OutPrice = #{outprice,jdbcType=DOUBLE},
+      </if>
+      <if test="avgprice != null" >
+        AvgPrice = #{avgprice,jdbcType=DOUBLE},
+      </if>
+      <if test="netweight != null" >
+        NetWeight = #{netweight,jdbcType=DOUBLE},
+      </if>
+      <if test="grossweight != null" >
+        GrossWeight = #{grossweight,jdbcType=DOUBLE},
+      </if>
+      <if test="picurl != null" >
+        PicUrl = #{picurl,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="defaultlocal != null" >
+        DefaultLocal = #{defaultlocal,jdbcType=VARCHAR},
+      </if>
+      <if test="cusnum != null" >
+        CusNum = #{cusnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cusname != null" >
+        CusName = #{cusname,jdbcType=VARCHAR},
+      </if>
+      <if test="display != null" >
+        Display = #{display,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.ProductWithBLOBs" >
+    update product
+    set SnNum = #{snnum,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      MinNum = #{minnum,jdbcType=DOUBLE},
+      MaxNum = #{maxnum,jdbcType=DOUBLE},
+      UnitNum = #{unitnum,jdbcType=VARCHAR},
+      UnitName = #{unitname,jdbcType=VARCHAR},
+      CateNum = #{catenum,jdbcType=VARCHAR},
+      CateName = #{catename,jdbcType=VARCHAR},
+      ProductSize = #{productsize,jdbcType=VARCHAR},
+      Color = #{color,jdbcType=VARCHAR},
+      InPrice = #{inprice,jdbcType=DOUBLE},
+      OutPrice = #{outprice,jdbcType=DOUBLE},
+      AvgPrice = #{avgprice,jdbcType=DOUBLE},
+      NetWeight = #{netweight,jdbcType=DOUBLE},
+      GrossWeight = #{grossweight,jdbcType=DOUBLE},
+      PicUrl = #{picurl,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      DefaultLocal = #{defaultlocal,jdbcType=VARCHAR},
+      CusNum = #{cusnum,jdbcType=VARCHAR},
+      CusName = #{cusname,jdbcType=VARCHAR},
+      Display = #{display,jdbcType=VARCHAR},
+      Description = #{description,jdbcType=LONGVARCHAR},
+      Remark = #{remark,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Product" >
+    update product
+    set SnNum = #{snnum,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      MinNum = #{minnum,jdbcType=DOUBLE},
+      MaxNum = #{maxnum,jdbcType=DOUBLE},
+      UnitNum = #{unitnum,jdbcType=VARCHAR},
+      UnitName = #{unitname,jdbcType=VARCHAR},
+      CateNum = #{catenum,jdbcType=VARCHAR},
+      CateName = #{catename,jdbcType=VARCHAR},
+      ProductSize = #{productsize,jdbcType=VARCHAR},
+      Color = #{color,jdbcType=VARCHAR},
+      InPrice = #{inprice,jdbcType=DOUBLE},
+      OutPrice = #{outprice,jdbcType=DOUBLE},
+      AvgPrice = #{avgprice,jdbcType=DOUBLE},
+      NetWeight = #{netweight,jdbcType=DOUBLE},
+      GrossWeight = #{grossweight,jdbcType=DOUBLE},
+      PicUrl = #{picurl,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      DefaultLocal = #{defaultlocal,jdbcType=VARCHAR},
+      CusNum = #{cusnum,jdbcType=VARCHAR},
+      CusName = #{cusname,jdbcType=VARCHAR},
+      Display = #{display,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

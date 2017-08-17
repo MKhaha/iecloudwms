@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.OutStorageDetailMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.OutStorageDetail" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SnNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BatchNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="IsPick" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="RealNum" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="OutPrice" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Amount" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="ContractOrder" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContractSn" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SnNum, OrderNum, ProductName, BarCode, ProductNum, BatchNum, LocalNum, StorageNum, 
+    Num, IsPick, RealNum, OutPrice, Amount, ContractOrder, ContractSn, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from out_storage_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from out_storage_detail
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.OutStorageDetail" >
+    insert into out_storage_detail (ID, SnNum, OrderNum, 
+      ProductName, BarCode, ProductNum, 
+      BatchNum, LocalNum, StorageNum, 
+      Num, IsPick, RealNum, 
+      OutPrice, Amount, ContractOrder, 
+      ContractSn, CreateTime)
+    values (#{id,jdbcType=INTEGER}, #{snnum,jdbcType=VARCHAR}, #{ordernum,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, #{productnum,jdbcType=VARCHAR}, 
+      #{batchnum,jdbcType=VARCHAR}, #{localnum,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, 
+      #{num,jdbcType=DOUBLE}, #{ispick,jdbcType=INTEGER}, #{realnum,jdbcType=DOUBLE}, 
+      #{outprice,jdbcType=DOUBLE}, #{amount,jdbcType=DOUBLE}, #{contractorder,jdbcType=VARCHAR}, 
+      #{contractsn,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.OutStorageDetail" >
+    insert into out_storage_detail
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="snnum != null" >
+        SnNum,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productnum != null" >
+        ProductNum,
+      </if>
+      <if test="batchnum != null" >
+        BatchNum,
+      </if>
+      <if test="localnum != null" >
+        LocalNum,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="ispick != null" >
+        IsPick,
+      </if>
+      <if test="realnum != null" >
+        RealNum,
+      </if>
+      <if test="outprice != null" >
+        OutPrice,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="contractorder != null" >
+        ContractOrder,
+      </if>
+      <if test="contractsn != null" >
+        ContractSn,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snnum != null" >
+        #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="ispick != null" >
+        #{ispick,jdbcType=INTEGER},
+      </if>
+      <if test="realnum != null" >
+        #{realnum,jdbcType=DOUBLE},
+      </if>
+      <if test="outprice != null" >
+        #{outprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="contractorder != null" >
+        #{contractorder,jdbcType=VARCHAR},
+      </if>
+      <if test="contractsn != null" >
+        #{contractsn,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.OutStorageDetail" >
+    update out_storage_detail
+    <set >
+      <if test="snnum != null" >
+        SnNum = #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        ProductNum = #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        BatchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        LocalNum = #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="ispick != null" >
+        IsPick = #{ispick,jdbcType=INTEGER},
+      </if>
+      <if test="realnum != null" >
+        RealNum = #{realnum,jdbcType=DOUBLE},
+      </if>
+      <if test="outprice != null" >
+        OutPrice = #{outprice,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="contractorder != null" >
+        ContractOrder = #{contractorder,jdbcType=VARCHAR},
+      </if>
+      <if test="contractsn != null" >
+        ContractSn = #{contractsn,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.OutStorageDetail" >
+    update out_storage_detail
+    set SnNum = #{snnum,jdbcType=VARCHAR},
+      OrderNum = #{ordernum,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductNum = #{productnum,jdbcType=VARCHAR},
+      BatchNum = #{batchnum,jdbcType=VARCHAR},
+      LocalNum = #{localnum,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      IsPick = #{ispick,jdbcType=INTEGER},
+      RealNum = #{realnum,jdbcType=DOUBLE},
+      OutPrice = #{outprice,jdbcType=DOUBLE},
+      Amount = #{amount,jdbcType=DOUBLE},
+      ContractOrder = #{contractorder,jdbcType=VARCHAR},
+      ContractSn = #{contractsn,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

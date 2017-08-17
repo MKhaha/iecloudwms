@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.CheckStockInformationMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.CheckStockInformation" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TargetNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OrderNum, StorageNum, TargetNum, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check_stock_information
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check_stock_information
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckStockInformation" >
+    insert into check_stock_information (ID, OrderNum, StorageNum, 
+      TargetNum, CreateTime)
+    values (#{id,jdbcType=INTEGER}, #{ordernum,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, 
+      #{targetnum,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckStockInformation" >
+    insert into check_stock_information
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="targetnum != null" >
+        TargetNum,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="targetnum != null" >
+        #{targetnum,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckStockInformation" >
+    update check_stock_information
+    <set >
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="targetnum != null" >
+        TargetNum = #{targetnum,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckStockInformation" >
+    update check_stock_information
+    set OrderNum = #{ordernum,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      TargetNum = #{targetnum,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.InventoryBookMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.InventoryBook" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ProductNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BatchNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="InventoryType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ContactOrder" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FromLocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ToLocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StoreNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ProductNum, BarCode, ProductName, BatchNum, Num, InventoryType, ContactOrder, 
+    FromLocalNum, ToLocalNum, StoreNum, CreateTime, CreateUser
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from inventory_book
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from inventory_book
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.InventoryBook" >
+    insert into inventory_book (ID, ProductNum, BarCode, 
+      ProductName, BatchNum, Num, 
+      InventoryType, ContactOrder, FromLocalNum, 
+      ToLocalNum, StoreNum, CreateTime, 
+      CreateUser)
+    values (#{id,jdbcType=INTEGER}, #{productnum,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, 
+      #{productname,jdbcType=VARCHAR}, #{batchnum,jdbcType=VARCHAR}, #{num,jdbcType=DOUBLE}, 
+      #{inventorytype,jdbcType=INTEGER}, #{contactorder,jdbcType=VARCHAR}, #{fromlocalnum,jdbcType=VARCHAR}, 
+      #{tolocalnum,jdbcType=VARCHAR}, #{storenum,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.InventoryBook" >
+    insert into inventory_book
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="productnum != null" >
+        ProductNum,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="batchnum != null" >
+        BatchNum,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="inventorytype != null" >
+        InventoryType,
+      </if>
+      <if test="contactorder != null" >
+        ContactOrder,
+      </if>
+      <if test="fromlocalnum != null" >
+        FromLocalNum,
+      </if>
+      <if test="tolocalnum != null" >
+        ToLocalNum,
+      </if>
+      <if test="storenum != null" >
+        StoreNum,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="inventorytype != null" >
+        #{inventorytype,jdbcType=INTEGER},
+      </if>
+      <if test="contactorder != null" >
+        #{contactorder,jdbcType=VARCHAR},
+      </if>
+      <if test="fromlocalnum != null" >
+        #{fromlocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="tolocalnum != null" >
+        #{tolocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="storenum != null" >
+        #{storenum,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.InventoryBook" >
+    update inventory_book
+    <set >
+      <if test="productnum != null" >
+        ProductNum = #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        BatchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="inventorytype != null" >
+        InventoryType = #{inventorytype,jdbcType=INTEGER},
+      </if>
+      <if test="contactorder != null" >
+        ContactOrder = #{contactorder,jdbcType=VARCHAR},
+      </if>
+      <if test="fromlocalnum != null" >
+        FromLocalNum = #{fromlocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="tolocalnum != null" >
+        ToLocalNum = #{tolocalnum,jdbcType=VARCHAR},
+      </if>
+      <if test="storenum != null" >
+        StoreNum = #{storenum,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.InventoryBook" >
+    update inventory_book
+    set ProductNum = #{productnum,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      BatchNum = #{batchnum,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      InventoryType = #{inventorytype,jdbcType=INTEGER},
+      ContactOrder = #{contactorder,jdbcType=VARCHAR},
+      FromLocalNum = #{fromlocalnum,jdbcType=VARCHAR},
+      ToLocalNum = #{tolocalnum,jdbcType=VARCHAR},
+      StoreNum = #{storenum,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

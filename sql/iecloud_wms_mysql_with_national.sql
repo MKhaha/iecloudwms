@@ -1,80 +1,80 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2017/8/15 10:04:35                           */
+/* Created on:     2017/8/16 15:44:07                           */
 /*==============================================================*/
 
 
 drop table if exists administrator;
 
-drop table if exists badreport;
+drop table if exists bad_report;
 
-drop table if exists badreportdetail;
+drop table if exists bad_report_detail;
 
-drop table if exists checkdata;
+drop table if exists check_data;
 
-drop table if exists checkstock;
+drop table if exists check_stock;
 
-drop table if exists checkstockinfo;
+drop table if exists check_stock_information;
 
-drop table if exists clonehistory;
+drop table if exists clone_history;
 
-drop table if exists clonetemp;
-
-drop table if exists cusaddress;
+drop table if exists clone_temp;
 
 drop table if exists customer;
 
+drop table if exists customer_address;
+
 drop table if exists equipment;
 
-drop table if exists instorage;
+drop table if exists in_storage;
 
-drop table if exists instordetail;
+drop table if exists in_storage_detail;
 
-drop table if exists inventorybook;
+drop table if exists inventory_book;
 
-drop table if exists localproduct;
+drop table if exists local_product;
 
 drop table if exists location;
 
 drop table if exists measure;
 
-drop table if exists measurerel;
+drop table if exists measure_relation;
 
-drop table if exists moveorder;
+drop table if exists move_order;
 
-drop table if exists moveorderdetail;
+drop table if exists move_order_detail;
 
-drop table if exists outstodetail;
+drop table if exists out_storage;
 
-drop table if exists outstorage;
+drop table if exists out_storage_detail;
 
 drop table if exists product;
 
-drop table if exists productcategory;
+drop table if exists product_category;
 
-drop table if exists reportparams;
+drop table if exists report_params;
 
 drop table if exists reports;
 
-drop table if exists returndetail;
+drop table if exists return_detail;
 
-drop table if exists returnorder;
+drop table if exists return_order;
 
-drop table if exists sequencenum;
+drop table if exists sequence_num;
+
+drop table if exists serial_number;
 
 drop table if exists storage;
 
 drop table if exists supplier;
 
-drop table if exists sysdepart;
+drop table if exists system_department;
 
-drop table if exists sysrelation;
+drop table if exists system_resource;
 
-drop table if exists sysresource;
+drop table if exists system_role;
 
-drop table if exists sysrole;
-
-drop table if exists tnum;
+drop table if exists system_role_resource_relation;
 
 /*==============================================================*/
 /* Table: administrator                                         */
@@ -107,9 +107,9 @@ create table administrator
 alter table administrator comment '系统管理账户';
 
 /*==============================================================*/
-/* Table: badreport                                             */
+/* Table: bad_report                                            */
 /*==============================================================*/
-create table badreport
+create table bad_report
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号--唯一',
@@ -136,12 +136,12 @@ create table badreport
    primary key (ID)
 );
 
-alter table badreport comment '报损管理';
+alter table bad_report comment '报损管理';
 
 /*==============================================================*/
-/* Table: badreportdetail                                       */
+/* Table: bad_report_detail                                     */
 /*==============================================================*/
-create table badreportdetail
+create table bad_report_detail
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SnNum                national varchar(50) not null comment '唯一编号',
@@ -160,12 +160,12 @@ create table badreportdetail
    primary key (ID)
 );
 
-alter table badreportdetail comment '报损单详细';
+alter table bad_report_detail comment '报损单详细';
 
 /*==============================================================*/
-/* Table: checkdata                                             */
+/* Table: check_data                                            */
 /*==============================================================*/
-create table checkdata
+create table check_data
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号',
@@ -186,12 +186,12 @@ create table checkdata
    primary key (ID)
 );
 
-alter table checkdata comment '盘点差异表';
+alter table check_data comment '盘点差异表';
 
 /*==============================================================*/
-/* Table: checkstock                                            */
+/* Table: check_stock                                           */
 /*==============================================================*/
-create table checkstock
+create table check_stock
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(20) not null comment '入库单编号',
@@ -218,12 +218,12 @@ create table checkstock
    primary key (ID)
 );
 
-alter table checkstock comment '盘点管理';
+alter table check_stock comment '盘点管理';
 
 /*==============================================================*/
-/* Table: checkstockinfo                                        */
+/* Table: check_stock_information                               */
 /*==============================================================*/
-create table checkstockinfo
+create table check_stock_information
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号',
@@ -233,12 +233,12 @@ create table checkstockinfo
    primary key (ID)
 );
 
-alter table checkstockinfo comment '盘点单与库位或者产品之间的关系';
+alter table check_stock_information comment '盘点单与库位或者产品之间的关系';
 
 /*==============================================================*/
-/* Table: clonehistory                                          */
+/* Table: clone_history                                         */
 /*==============================================================*/
-create table clonehistory
+create table clone_history
 (
    CloneID              int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号',
@@ -261,12 +261,12 @@ create table clonehistory
    primary key (CloneID)
 );
 
-alter table clonehistory comment '盘点克隆历史表';
+alter table clone_history comment '盘点克隆历史表';
 
 /*==============================================================*/
-/* Table: clonetemp                                             */
+/* Table: clone_temp                                            */
 /*==============================================================*/
-create table clonetemp
+create table clone_temp
 (
    CloneID              int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号',
@@ -289,27 +289,7 @@ create table clonetemp
    primary key (CloneID)
 );
 
-alter table clonetemp comment '盘点克隆临时表';
-
-/*==============================================================*/
-/* Table: cusaddress                                            */
-/*==============================================================*/
-create table cusaddress
-(
-   ID                   int(11) not null auto_increment comment '主键编号',
-   SnNum                national varchar(200) not null comment '收货单位编号',
-   CusNum               national varchar(20) not null comment '客户编号',
-   Contact              national varchar(200) comment '收货联系人',
-   Phone                national varchar(20) comment '联系电话',
-   Address              national varchar(200) not null comment '联系地址',
-   IsDelete             int(11) not null default 0 comment '是否删除',
-   CreateTime           datetime not null comment '创建时间',
-   CreateUser           national varchar(20) comment '创建人',
-   Remark               national varchar(200) comment '备注',
-   primary key (ID)
-);
-
-alter table cusaddress comment '客户收货单位';
+alter table clone_temp comment '盘点克隆临时表';
 
 /*==============================================================*/
 /* Table: customer                                              */
@@ -334,6 +314,26 @@ create table customer
 alter table customer comment '客户管理';
 
 /*==============================================================*/
+/* Table: customer_address                                      */
+/*==============================================================*/
+create table customer_address
+(
+   ID                   int(11) not null auto_increment comment '主键编号',
+   SnNum                national varchar(200) not null comment '收货单位编号',
+   CusNum               national varchar(20) not null comment '客户编号',
+   Contact              national varchar(200) comment '收货联系人',
+   Phone                national varchar(20) comment '联系电话',
+   Address              national varchar(200) not null comment '联系地址',
+   IsDelete             int(11) not null default 0 comment '是否删除',
+   CreateTime           datetime not null comment '创建时间',
+   CreateUser           national varchar(20) comment '创建人',
+   Remark               national varchar(200) comment '备注',
+   primary key (ID)
+);
+
+alter table customer_address comment '客户收货单位';
+
+/*==============================================================*/
 /* Table: equipment                                             */
 /*==============================================================*/
 create table equipment
@@ -355,9 +355,9 @@ create table equipment
 alter table equipment comment '设备授权';
 
 /*==============================================================*/
-/* Table: instorage                                             */
+/* Table: in_storage                                            */
 /*==============================================================*/
-create table instorage
+create table in_storage
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号',
@@ -393,12 +393,12 @@ create table instorage
    primary key (ID)
 );
 
-alter table instorage comment '入库单管理';
+alter table in_storage comment '入库单管理';
 
 /*==============================================================*/
-/* Table: instordetail                                          */
+/* Table: in_storage_detail                                     */
 /*==============================================================*/
-create table instordetail
+create table in_storage_detail
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SnNum                national varchar(50) not null comment '唯一编号',
@@ -419,12 +419,12 @@ create table instordetail
    primary key (ID)
 );
 
-alter table instordetail comment '入库单产品详细管理';
+alter table in_storage_detail comment '入库单产品详细管理';
 
 /*==============================================================*/
-/* Table: inventorybook                                         */
+/* Table: inventory_book                                        */
 /*==============================================================*/
-create table inventorybook
+create table inventory_book
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    ProductNum           national varchar(50) not null comment '产品唯一编号',
@@ -442,12 +442,12 @@ create table inventorybook
    primary key (ID)
 );
 
-alter table inventorybook comment '仓库库存记录变化台账：1 入库，2 出库，3 移库(移除) -3 移库(移入)，4 报损(移除) -4 报损(移入)，5';
+alter table inventory_book comment '仓库库存记录变化台账：1 入库，2 出库，3 移库(移除) -3 移库(移入)，4 报损(移除) -4 报损(移入)，5';
 
 /*==============================================================*/
-/* Table: localproduct                                          */
+/* Table: local_product                                         */
 /*==============================================================*/
-create table localproduct
+create table local_product
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    Sn                   national varchar(50) not null comment '唯一编号',
@@ -468,7 +468,7 @@ create table localproduct
    primary key (ID)
 );
 
-alter table localproduct comment '库存管理';
+alter table local_product comment '库存管理';
 
 /*==============================================================*/
 /* Table: location                                              */
@@ -516,9 +516,9 @@ create table measure
 alter table measure comment '单位管理';
 
 /*==============================================================*/
-/* Table: measurerel                                            */
+/* Table: measure_relation                                      */
 /*==============================================================*/
-create table measurerel
+create table measure_relation
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SN                   national varchar(50) not null comment '唯一编号',
@@ -528,12 +528,12 @@ create table measurerel
    primary key (ID)
 );
 
-alter table measurerel comment '单位换算关系';
+alter table measure_relation comment '单位换算关系';
 
 /*==============================================================*/
-/* Table: moveorder                                             */
+/* Table: move_order                                            */
 /*==============================================================*/
-create table moveorder
+create table move_order
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '入库单编号--唯一',
@@ -560,12 +560,12 @@ create table moveorder
    primary key (ID)
 );
 
-alter table moveorder comment '移库管理';
+alter table move_order comment '移库管理';
 
 /*==============================================================*/
-/* Table: moveorderdetail                                       */
+/* Table: move_order_detail                                     */
 /*==============================================================*/
-create table moveorderdetail
+create table move_order_detail
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SnNum                national varchar(50) not null comment '唯一编号',
@@ -586,39 +586,12 @@ create table moveorderdetail
    primary key (ID)
 );
 
-alter table moveorderdetail comment '移库单详细';
+alter table move_order_detail comment '移库单详细';
 
 /*==============================================================*/
-/* Table: outstodetail                                          */
+/* Table: out_storage                                           */
 /*==============================================================*/
-create table outstodetail
-(
-   ID                   int(11) not null auto_increment comment '主键编号',
-   SnNum                national varchar(50) not null comment '唯一编号',
-   OrderNum             national varchar(50) not null comment '出库单编号',
-   ProductName          national varchar(100) comment '产品名称',
-   BarCode              national varchar(50) not null comment '条码编号',
-   ProductNum           national varchar(50) not null comment '产品唯一编号',
-   BatchNum             national varchar(50) comment '生产批次',
-   LocalNum             national varchar(50) not null comment '库位编号',
-   StorageNum           national varchar(50) comment '仓库编号',
-   Num                  double not null default 0 comment '入库数量',
-   IsPick               int(11) not null default 0 comment '是否审核 Yes No',
-   RealNum              double not null default 0 comment '实际数量',
-   OutPrice             double default 0 comment '单价',
-   Amount               double default 0 comment '总价',
-   ContractOrder        national varchar(50) comment '关联单号',
-   ContractSn           national varchar(50) comment '关联单号子项',
-   CreateTime           datetime not null comment '创建时间',
-   primary key (ID)
-);
-
-alter table outstodetail comment '出库商品详细管理';
-
-/*==============================================================*/
-/* Table: outstorage                                            */
-/*==============================================================*/
-create table outstorage
+create table out_storage
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '出库单编号',
@@ -651,7 +624,34 @@ create table outstorage
    primary key (ID)
 );
 
-alter table outstorage comment '出库管理';
+alter table out_storage comment '出库管理';
+
+/*==============================================================*/
+/* Table: out_storage_detail                                    */
+/*==============================================================*/
+create table out_storage_detail
+(
+   ID                   int(11) not null auto_increment comment '主键编号',
+   SnNum                national varchar(50) not null comment '唯一编号',
+   OrderNum             national varchar(50) not null comment '出库单编号',
+   ProductName          national varchar(100) comment '产品名称',
+   BarCode              national varchar(50) not null comment '条码编号',
+   ProductNum           national varchar(50) not null comment '产品唯一编号',
+   BatchNum             national varchar(50) comment '生产批次',
+   LocalNum             national varchar(50) not null comment '库位编号',
+   StorageNum           national varchar(50) comment '仓库编号',
+   Num                  double not null default 0 comment '入库数量',
+   IsPick               int(11) not null default 0 comment '是否审核 Yes No',
+   RealNum              double not null default 0 comment '实际数量',
+   OutPrice             double default 0 comment '单价',
+   Amount               double default 0 comment '总价',
+   ContractOrder        national varchar(50) comment '关联单号',
+   ContractSn           national varchar(50) comment '关联单号子项',
+   CreateTime           datetime not null comment '创建时间',
+   primary key (ID)
+);
+
+alter table out_storage_detail comment '出库商品详细管理';
 
 /*==============================================================*/
 /* Table: product                                               */
@@ -693,9 +693,9 @@ create table product
 alter table product comment '成品管理';
 
 /*==============================================================*/
-/* Table: productcategory                                       */
+/* Table: product_category                                      */
 /*==============================================================*/
-create table productcategory
+create table product_category
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    CateNum              national varchar(15) not null comment '原料类型编号',
@@ -707,54 +707,54 @@ create table productcategory
    primary key (ID)
 );
 
-alter table productcategory comment '成品类别管理';
+alter table product_category comment '成品类别管理';
 
 /*==============================================================*/
-/* Table: reportparams                                          */
+/* Table: report_params                                         */
 /*==============================================================*/
-create table reportparams
+create table report_params
 (
-   ID                   int(11) not null auto_increment,
-   ParamNum             national varchar(50) not null,
-   ReportNum            national varchar(50) not null,
-   InputNo              national varchar(50),
-   ParamName            national varchar(50),
-   ShowName             national varchar(50),
-   ParamType            national varchar(50),
-   ParamData            national varchar(1000),
-   DefaultValue         national varchar(100),
-   ParamElement         national varchar(200),
-   Remark               national varchar(200),
+   ID                   int(11) not null auto_increment comment '主键编号',
+   ParamNum             national varchar(50) not null comment '参数编号',
+   ReportNum            national varchar(50) not null comment '报表主键 唯一编号',
+   InputNo              national varchar(50) comment '输入序号',
+   ParamName            national varchar(50) comment '参数名称',
+   ShowName             national varchar(50) comment '参数显示名称',
+   ParamType            national varchar(50) comment '参数类型',
+   ParamData            national varchar(1000) comment '参数可选值 JSON格式',
+   DefaultValue         national varchar(100) comment '参数默认值',
+   ParamElement         national varchar(200) comment '输入框元素',
+   Remark               national varchar(200) comment '备注',
    primary key (ID)
 );
 
-alter table reportparams comment 'reportparams';
+alter table report_params comment 'report_params';
 
 /*==============================================================*/
 /* Table: reports                                               */
 /*==============================================================*/
 create table reports
 (
-   ID                   int(11) not null auto_increment,
-   ReportNum            national varchar(50) not null,
-   ReportName           national varchar(50),
-   ReportType           int(11) default 0,
-   Remark               national varchar(200),
-   DataSource           national varchar(4000),
-   DsType               int(11) default 0,
-   FileName             national varchar(200),
-   IsDelete             int(11) default 0,
-   Status               int(11) default 0,
-   CreateTime           datetime,
+   ID                   int(11) not null auto_increment comment '主键编号',
+   ReportNum            national varchar(50) not null comment '报表主键 唯一编号',
+   ReportName           national varchar(50) comment '报表名称',
+   ReportType           int(11) default 0 comment '报表类型 1 单据 2 报表',
+   Remark               national varchar(200) comment '备注',
+   DataSource           national varchar(4000) comment '数据源',
+   DsType               int(11) default 0 comment '数据源类型 --1 SQL语句 2 存储过程',
+   FileName             national varchar(200) comment '报表格式文件',
+   IsDelete             int(11) default 0 comment '是否删除',
+   Status               int(11) default 0 comment '禁用启用',
+   CreateTime           datetime comment '创建时间',
    primary key (ID)
 );
 
 alter table reports comment 'reports';
 
 /*==============================================================*/
-/* Table: returndetail                                          */
+/* Table: return_detail                                         */
 /*==============================================================*/
-create table returndetail
+create table return_detail
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SnNum                national varchar(50) not null comment '唯一编号',
@@ -775,12 +775,12 @@ create table returndetail
    primary key (ID)
 );
 
-alter table returndetail comment '退货商品详细管理';
+alter table return_detail comment '退货商品详细管理';
 
 /*==============================================================*/
-/* Table: returnorder                                           */
+/* Table: return_order                                          */
 /*==============================================================*/
-create table returnorder
+create table return_order
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    OrderNum             national varchar(50) not null comment '退货单编号',
@@ -812,28 +812,28 @@ create table returnorder
    primary key (ID)
 );
 
-alter table returnorder comment '退货管理';
+alter table return_order comment '退货管理';
 
 /*==============================================================*/
-/* Table: sequencenum                                           */
+/* Table: sequence_num                                          */
 /*==============================================================*/
-create table sequencenum
+create table sequence_num
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    SN                   national varchar(50) comment '唯一编号',
    TabName              national varchar(50) not null comment '表名',
-   FirstType            int(11) not null default 0 comment '前缀类型',
-   FirstRule            national varchar(100) comment '前缀规则',
-   FirstLength          int(11) default 0 comment '前缀长度',
-   SecondType           int(11) default 0,
-   SecondRule           national varchar(100),
-   SecondLength         int(11) default 0,
-   ThirdType            int(11) default 0,
-   ThirdRule            national varchar(100),
-   ThirdLength          int(11) default 0,
-   FourType             int(11) default 0,
-   FourRule             national varchar(100),
-   FourLength           int(11) default 0,
+   FirstType            int(11) not null default 0 comment '第一部分类型',
+   FirstRule            national varchar(100) comment '第一部分规则',
+   FirstLength          int(11) default 0 comment '第一部分长度',
+   SecondType           int(11) default 0 comment '第二部分类型',
+   SecondRule           national varchar(100) comment '第二部分规则',
+   SecondLength         int(11) default 0 comment '第二部分长度',
+   ThirdType            int(11) default 0 comment '第三部分类型',
+   ThirdRule            national varchar(100) comment '第三部分规则',
+   ThirdLength          int(11) default 0 comment '第三部分长度',
+   FourType             int(11) default 0 comment '第四部分类型',
+   FourRule             national varchar(100) comment '第四部分规则',
+   FourLength           int(11) default 0 comment '第四部分长度',
    JoinChar             national varchar(10) comment '链接符',
    Sample               national varchar(100) comment '样例',
    CurrentValue         national varchar(100) comment '当前值',
@@ -841,7 +841,23 @@ create table sequencenum
    primary key (ID)
 );
 
-alter table sequencenum comment 'sequencenum';
+alter table sequence_num comment '单号管理';
+
+/*==============================================================*/
+/* Table: serial_number                                         */
+/*==============================================================*/
+create table serial_number
+(
+   ID                   int(11) not null auto_increment comment '主键编号',
+   Num                  int(11) not null default 0 comment '流水号',
+   MinNum               int(11) not null default 0 comment '最小值',
+   MaxNum               int(11) not null default 0 comment '最大值',
+   CreateDay            national varchar(20) comment '日期',
+   TabName              national varchar(50) not null comment '表名',
+   primary key (ID)
+);
+
+alter table serial_number comment '流水号管理';
 
 /*==============================================================*/
 /* Table: storage                                               */
@@ -892,9 +908,9 @@ create table supplier
 alter table supplier comment '供应商管理';
 
 /*==============================================================*/
-/* Table: sysdepart                                             */
+/* Table: system_department                                     */
 /*==============================================================*/
-create table sysdepart
+create table system_department
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    DepartNum            national varchar(20) not null comment '部门编号',
@@ -907,26 +923,12 @@ create table sysdepart
    primary key (ID)
 );
 
-alter table sysdepart comment '系统管理部门';
+alter table system_department comment '系统管理部门';
 
 /*==============================================================*/
-/* Table: sysrelation                                           */
+/* Table: system_resource                                       */
 /*==============================================================*/
-create table sysrelation
-(
-   ID                   int(11) not null auto_increment comment '主键编号',
-   RoleNum              national varchar(20) not null comment '角色编号',
-   ResNum               national varchar(20) not null comment '资源名称',
-   ResType              int(11) not null default 0 comment '资源类型',
-   primary key (ID)
-);
-
-alter table sysrelation comment 'sysrelation';
-
-/*==============================================================*/
-/* Table: sysresource                                           */
-/*==============================================================*/
-create table sysresource
+create table system_resource
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    ResNum               national varchar(20) not null comment '资源编号',
@@ -952,12 +954,12 @@ create table sysresource
    primary key (ID)
 );
 
-alter table sysresource comment 'sysresource';
+alter table system_resource comment 'system_resource';
 
 /*==============================================================*/
-/* Table: sysrole                                               */
+/* Table: system_role                                           */
 /*==============================================================*/
-create table sysrole
+create table system_role
 (
    ID                   int(11) not null auto_increment comment '主键编号',
    RoleNum              national varchar(20) not null comment '角色编号',
@@ -968,21 +970,19 @@ create table sysrole
    primary key (ID)
 );
 
-alter table sysrole comment '系统管理角色';
+alter table system_role comment '系统管理角色';
 
 /*==============================================================*/
-/* Table: tnum                                                  */
+/* Table: system_role_resource_relation                         */
 /*==============================================================*/
-create table tnum
+create table system_role_resource_relation
 (
    ID                   int(11) not null auto_increment comment '主键编号',
-   Num                  int(11) not null default 0 comment '流水号',
-   MinNum               int(11) not null default 0 comment '最小值',
-   MaxNum               int(11) not null default 0 comment '最大值',
-   CreateDay            national varchar(20) comment '日期',
-   TabName              national varchar(50) not null comment '表名',
+   RoleNum              national varchar(20) not null comment '角色编号',
+   ResNum               national varchar(20) not null comment '资源名称',
+   ResType              int(11) not null default 0 comment '资源类型',
    primary key (ID)
 );
 
-alter table tnum comment 'tnum';
+alter table system_role_resource_relation comment 'system_role_resource_relation';
 

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.SupplierMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SupNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SupName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SupType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Fax" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContactName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContractNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SupNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SupName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SupType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Phone" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Fax" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Email" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContactName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Address" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContractNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Description" jdbcType="LONGVARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SupNum, SupName, SupType, Phone, Fax, Email, ContactName, Address, CreateUser, 
+    ContractNum, IsDelete, CreateTime
+  </sql>
+  <sql id="Blob_Column_List" >
+    Description
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from supplier
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from supplier
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    insert into supplier (ID, SupNum, SupName, 
+      SupType, Phone, Fax, 
+      Email, ContactName, Address, 
+      CreateUser, ContractNum, IsDelete, 
+      CreateTime, Description)
+    values (#{id,jdbcType=INTEGER}, #{supnum,jdbcType=VARCHAR}, #{supname,jdbcType=VARCHAR}, 
+      #{suptype,jdbcType=INTEGER}, #{phone,jdbcType=VARCHAR}, #{fax,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{contactname,jdbcType=VARCHAR}, #{address,jdbcType=VARCHAR}, 
+      #{createuser,jdbcType=VARCHAR}, #{contractnum,jdbcType=VARCHAR}, #{isdelete,jdbcType=INTEGER}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{description,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    insert into supplier
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="supnum != null" >
+        SupNum,
+      </if>
+      <if test="supname != null" >
+        SupName,
+      </if>
+      <if test="suptype != null" >
+        SupType,
+      </if>
+      <if test="phone != null" >
+        Phone,
+      </if>
+      <if test="fax != null" >
+        Fax,
+      </if>
+      <if test="email != null" >
+        Email,
+      </if>
+      <if test="contactname != null" >
+        ContactName,
+      </if>
+      <if test="address != null" >
+        Address,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="contractnum != null" >
+        ContractNum,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="description != null" >
+        Description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="supnum != null" >
+        #{supnum,jdbcType=VARCHAR},
+      </if>
+      <if test="supname != null" >
+        #{supname,jdbcType=VARCHAR},
+      </if>
+      <if test="suptype != null" >
+        #{suptype,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="contractnum != null" >
+        #{contractnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    update supplier
+    <set >
+      <if test="supnum != null" >
+        SupNum = #{supnum,jdbcType=VARCHAR},
+      </if>
+      <if test="supname != null" >
+        SupName = #{supname,jdbcType=VARCHAR},
+      </if>
+      <if test="suptype != null" >
+        SupType = #{suptype,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null" >
+        Phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="fax != null" >
+        Fax = #{fax,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        Email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="contactname != null" >
+        ContactName = #{contactname,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null" >
+        Address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="contractnum != null" >
+        ContractNum = #{contractnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        Description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    update supplier
+    set SupNum = #{supnum,jdbcType=VARCHAR},
+      SupName = #{supname,jdbcType=VARCHAR},
+      SupType = #{suptype,jdbcType=INTEGER},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Fax = #{fax,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      ContactName = #{contactname,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      ContractNum = #{contractnum,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Description = #{description,jdbcType=LONGVARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Supplier" >
+    update supplier
+    set SupNum = #{supnum,jdbcType=VARCHAR},
+      SupName = #{supname,jdbcType=VARCHAR},
+      SupType = #{suptype,jdbcType=INTEGER},
+      Phone = #{phone,jdbcType=VARCHAR},
+      Fax = #{fax,jdbcType=VARCHAR},
+      Email = #{email,jdbcType=VARCHAR},
+      ContactName = #{contactname,jdbcType=VARCHAR},
+      Address = #{address,jdbcType=VARCHAR},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      ContractNum = #{contractnum,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

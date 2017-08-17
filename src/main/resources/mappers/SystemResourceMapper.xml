@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.SystemResourceMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.SystemResource" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ResNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ResName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ParentNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ResourceDepth" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ParentPath" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ChildCount" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Sort" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsHide" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Url" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CssName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Depart" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ResType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="UpdateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UpdateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateIp" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UpdateIp" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, ResNum, ResName, ParentNum, ResourceDepth, ParentPath, ChildCount, Sort, IsHide, 
+    IsDelete, Url, CssName, CreateTime, Depart, ResType, UpdateTime, CreateUser, UpdateUser, 
+    CreateIp, UpdateIp, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from system_resource
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from system_resource
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemResource" >
+    insert into system_resource (ID, ResNum, ResName, 
+      ParentNum, ResourceDepth, ParentPath, 
+      ChildCount, Sort, IsHide, 
+      IsDelete, Url, CssName, 
+      CreateTime, Depart, ResType, 
+      UpdateTime, CreateUser, UpdateUser, 
+      CreateIp, UpdateIp, Remark
+      )
+    values (#{id,jdbcType=INTEGER}, #{resnum,jdbcType=VARCHAR}, #{resname,jdbcType=VARCHAR}, 
+      #{parentnum,jdbcType=VARCHAR}, #{resourcedepth,jdbcType=INTEGER}, #{parentpath,jdbcType=VARCHAR}, 
+      #{childcount,jdbcType=INTEGER}, #{sort,jdbcType=INTEGER}, #{ishide,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{cssname,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{depart,jdbcType=INTEGER}, #{restype,jdbcType=INTEGER}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}, 
+      #{createip,jdbcType=VARCHAR}, #{updateip,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemResource" >
+    insert into system_resource
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="resnum != null" >
+        ResNum,
+      </if>
+      <if test="resname != null" >
+        ResName,
+      </if>
+      <if test="parentnum != null" >
+        ParentNum,
+      </if>
+      <if test="resourcedepth != null" >
+        ResourceDepth,
+      </if>
+      <if test="parentpath != null" >
+        ParentPath,
+      </if>
+      <if test="childcount != null" >
+        ChildCount,
+      </if>
+      <if test="sort != null" >
+        Sort,
+      </if>
+      <if test="ishide != null" >
+        IsHide,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="url != null" >
+        Url,
+      </if>
+      <if test="cssname != null" >
+        CssName,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="depart != null" >
+        Depart,
+      </if>
+      <if test="restype != null" >
+        ResType,
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="updateuser != null" >
+        UpdateUser,
+      </if>
+      <if test="createip != null" >
+        CreateIp,
+      </if>
+      <if test="updateip != null" >
+        UpdateIp,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="resnum != null" >
+        #{resnum,jdbcType=VARCHAR},
+      </if>
+      <if test="resname != null" >
+        #{resname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentnum != null" >
+        #{parentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcedepth != null" >
+        #{resourcedepth,jdbcType=INTEGER},
+      </if>
+      <if test="parentpath != null" >
+        #{parentpath,jdbcType=VARCHAR},
+      </if>
+      <if test="childcount != null" >
+        #{childcount,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="ishide != null" >
+        #{ishide,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssname != null" >
+        #{cssname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depart != null" >
+        #{depart,jdbcType=INTEGER},
+      </if>
+      <if test="restype != null" >
+        #{restype,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createip != null" >
+        #{createip,jdbcType=VARCHAR},
+      </if>
+      <if test="updateip != null" >
+        #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemResource" >
+    update system_resource
+    <set >
+      <if test="resnum != null" >
+        ResNum = #{resnum,jdbcType=VARCHAR},
+      </if>
+      <if test="resname != null" >
+        ResName = #{resname,jdbcType=VARCHAR},
+      </if>
+      <if test="parentnum != null" >
+        ParentNum = #{parentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="resourcedepth != null" >
+        ResourceDepth = #{resourcedepth,jdbcType=INTEGER},
+      </if>
+      <if test="parentpath != null" >
+        ParentPath = #{parentpath,jdbcType=VARCHAR},
+      </if>
+      <if test="childcount != null" >
+        ChildCount = #{childcount,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null" >
+        Sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="ishide != null" >
+        IsHide = #{ishide,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="url != null" >
+        Url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="cssname != null" >
+        CssName = #{cssname,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="depart != null" >
+        Depart = #{depart,jdbcType=INTEGER},
+      </if>
+      <if test="restype != null" >
+        ResType = #{restype,jdbcType=INTEGER},
+      </if>
+      <if test="updatetime != null" >
+        UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null" >
+        UpdateUser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createip != null" >
+        CreateIp = #{createip,jdbcType=VARCHAR},
+      </if>
+      <if test="updateip != null" >
+        UpdateIp = #{updateip,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SystemResource" >
+    update system_resource
+    set ResNum = #{resnum,jdbcType=VARCHAR},
+      ResName = #{resname,jdbcType=VARCHAR},
+      ParentNum = #{parentnum,jdbcType=VARCHAR},
+      ResourceDepth = #{resourcedepth,jdbcType=INTEGER},
+      ParentPath = #{parentpath,jdbcType=VARCHAR},
+      ChildCount = #{childcount,jdbcType=INTEGER},
+      Sort = #{sort,jdbcType=INTEGER},
+      IsHide = #{ishide,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      Url = #{url,jdbcType=VARCHAR},
+      CssName = #{cssname,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Depart = #{depart,jdbcType=INTEGER},
+      ResType = #{restype,jdbcType=INTEGER},
+      UpdateTime = #{updatetime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      UpdateUser = #{updateuser,jdbcType=VARCHAR},
+      CreateIp = #{createip,jdbcType=VARCHAR},
+      UpdateIp = #{updateip,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

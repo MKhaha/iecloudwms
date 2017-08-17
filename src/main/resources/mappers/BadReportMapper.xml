@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.BadReportMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.BadReport" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BadType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ProductType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ContractOrder" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Amount" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Weight" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="AuditUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="AuditeTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="PrintUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="PrintTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Reason" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="OperateType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="EquipmentNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EquipmentCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OrderNum, BadType, ProductType, StorageNum, ContractOrder, Status, Num, Amount, 
+    Weight, IsDelete, CreateTime, CreateUser, AuditUser, AuditeTime, PrintUser, PrintTime, 
+    Reason, OperateType, EquipmentNum, EquipmentCode, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from bad_report
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from bad_report
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReport" >
+    insert into bad_report (ID, OrderNum, BadType, 
+      ProductType, StorageNum, ContractOrder, 
+      Status, Num, Amount, 
+      Weight, IsDelete, CreateTime, 
+      CreateUser, AuditUser, AuditeTime, 
+      PrintUser, PrintTime, Reason, 
+      OperateType, EquipmentNum, EquipmentCode, 
+      Remark)
+    values (#{id,jdbcType=INTEGER}, #{ordernum,jdbcType=VARCHAR}, #{badtype,jdbcType=INTEGER}, 
+      #{producttype,jdbcType=INTEGER}, #{storagenum,jdbcType=VARCHAR}, #{contractorder,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{num,jdbcType=DOUBLE}, #{amount,jdbcType=DOUBLE}, 
+      #{weight,jdbcType=DOUBLE}, #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR}, #{audituser,jdbcType=VARCHAR}, #{auditetime,jdbcType=TIMESTAMP}, 
+      #{printuser,jdbcType=VARCHAR}, #{printtime,jdbcType=TIMESTAMP}, #{reason,jdbcType=VARCHAR}, 
+      #{operatetype,jdbcType=INTEGER}, #{equipmentnum,jdbcType=VARCHAR}, #{equipmentcode,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReport" >
+    insert into bad_report
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="badtype != null" >
+        BadType,
+      </if>
+      <if test="producttype != null" >
+        ProductType,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="contractorder != null" >
+        ContractOrder,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="amount != null" >
+        Amount,
+      </if>
+      <if test="weight != null" >
+        Weight,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="audituser != null" >
+        AuditUser,
+      </if>
+      <if test="auditetime != null" >
+        AuditeTime,
+      </if>
+      <if test="printuser != null" >
+        PrintUser,
+      </if>
+      <if test="printtime != null" >
+        PrintTime,
+      </if>
+      <if test="reason != null" >
+        Reason,
+      </if>
+      <if test="operatetype != null" >
+        OperateType,
+      </if>
+      <if test="equipmentnum != null" >
+        EquipmentNum,
+      </if>
+      <if test="equipmentcode != null" >
+        EquipmentCode,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="badtype != null" >
+        #{badtype,jdbcType=INTEGER},
+      </if>
+      <if test="producttype != null" >
+        #{producttype,jdbcType=INTEGER},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="contractorder != null" >
+        #{contractorder,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null" >
+        #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="audituser != null" >
+        #{audituser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditetime != null" >
+        #{auditetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printuser != null" >
+        #{printuser,jdbcType=VARCHAR},
+      </if>
+      <if test="printtime != null" >
+        #{printtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null" >
+        #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetype != null" >
+        #{operatetype,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentnum != null" >
+        #{equipmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentcode != null" >
+        #{equipmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReport" >
+    update bad_report
+    <set >
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="badtype != null" >
+        BadType = #{badtype,jdbcType=INTEGER},
+      </if>
+      <if test="producttype != null" >
+        ProductType = #{producttype,jdbcType=INTEGER},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="contractorder != null" >
+        ContractOrder = #{contractorder,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="amount != null" >
+        Amount = #{amount,jdbcType=DOUBLE},
+      </if>
+      <if test="weight != null" >
+        Weight = #{weight,jdbcType=DOUBLE},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="audituser != null" >
+        AuditUser = #{audituser,jdbcType=VARCHAR},
+      </if>
+      <if test="auditetime != null" >
+        AuditeTime = #{auditetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="printuser != null" >
+        PrintUser = #{printuser,jdbcType=VARCHAR},
+      </if>
+      <if test="printtime != null" >
+        PrintTime = #{printtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="reason != null" >
+        Reason = #{reason,jdbcType=VARCHAR},
+      </if>
+      <if test="operatetype != null" >
+        OperateType = #{operatetype,jdbcType=INTEGER},
+      </if>
+      <if test="equipmentnum != null" >
+        EquipmentNum = #{equipmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentcode != null" >
+        EquipmentCode = #{equipmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.BadReport" >
+    update bad_report
+    set OrderNum = #{ordernum,jdbcType=VARCHAR},
+      BadType = #{badtype,jdbcType=INTEGER},
+      ProductType = #{producttype,jdbcType=INTEGER},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      ContractOrder = #{contractorder,jdbcType=VARCHAR},
+      Status = #{status,jdbcType=INTEGER},
+      Num = #{num,jdbcType=DOUBLE},
+      Amount = #{amount,jdbcType=DOUBLE},
+      Weight = #{weight,jdbcType=DOUBLE},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      AuditUser = #{audituser,jdbcType=VARCHAR},
+      AuditeTime = #{auditetime,jdbcType=TIMESTAMP},
+      PrintUser = #{printuser,jdbcType=VARCHAR},
+      PrintTime = #{printtime,jdbcType=TIMESTAMP},
+      Reason = #{reason,jdbcType=VARCHAR},
+      OperateType = #{operatetype,jdbcType=INTEGER},
+      EquipmentNum = #{equipmentnum,jdbcType=VARCHAR},
+      EquipmentCode = #{equipmentcode,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

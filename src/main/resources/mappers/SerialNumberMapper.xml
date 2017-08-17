@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.SerialNumberMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.SerialNumber" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Num" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="MinNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="MaxNum" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateDay" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TabName" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, Num, MinNum, MaxNum, CreateDay, TabName
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from serial_number
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from serial_number
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SerialNumber" >
+    insert into serial_number (ID, Num, MinNum, 
+      MaxNum, CreateDay, TabName
+      )
+    values (#{id,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, #{minnum,jdbcType=INTEGER}, 
+      #{maxnum,jdbcType=INTEGER}, #{createday,jdbcType=VARCHAR}, #{tabname,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SerialNumber" >
+    insert into serial_number
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="minnum != null" >
+        MinNum,
+      </if>
+      <if test="maxnum != null" >
+        MaxNum,
+      </if>
+      <if test="createday != null" >
+        CreateDay,
+      </if>
+      <if test="tabname != null" >
+        TabName,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="minnum != null" >
+        #{minnum,jdbcType=INTEGER},
+      </if>
+      <if test="maxnum != null" >
+        #{maxnum,jdbcType=INTEGER},
+      </if>
+      <if test="createday != null" >
+        #{createday,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null" >
+        #{tabname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SerialNumber" >
+    update serial_number
+    <set >
+      <if test="num != null" >
+        Num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="minnum != null" >
+        MinNum = #{minnum,jdbcType=INTEGER},
+      </if>
+      <if test="maxnum != null" >
+        MaxNum = #{maxnum,jdbcType=INTEGER},
+      </if>
+      <if test="createday != null" >
+        CreateDay = #{createday,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null" >
+        TabName = #{tabname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SerialNumber" >
+    update serial_number
+    set Num = #{num,jdbcType=INTEGER},
+      MinNum = #{minnum,jdbcType=INTEGER},
+      MaxNum = #{maxnum,jdbcType=INTEGER},
+      CreateDay = #{createday,jdbcType=VARCHAR},
+      TabName = #{tabname,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

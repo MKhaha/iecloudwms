@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.CloneTempMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.CloneTemp" >
+    <constructor >
+      <idArg column="CloneID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Sn" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ProductNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BatchNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Num" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    CloneID, OrderNum, ID, Sn, StorageNum, StorageName, LocalNum, LocalName, LocalType, 
+    ProductNum, BarCode, ProductName, BatchNum, Num, CreateTime, CreateUser, CreateName, 
+    Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from clone_temp
+    where CloneID = #{cloneid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from clone_temp
+    where CloneID = #{cloneid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CloneTemp" >
+    insert into clone_temp (CloneID, OrderNum, ID, 
+      Sn, StorageNum, StorageName, 
+      LocalNum, LocalName, LocalType, 
+      ProductNum, BarCode, ProductName, 
+      BatchNum, Num, CreateTime, 
+      CreateUser, CreateName, Remark
+      )
+    values (#{cloneid,jdbcType=INTEGER}, #{ordernum,jdbcType=VARCHAR}, #{id,jdbcType=INTEGER}, 
+      #{sn,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, #{storagename,jdbcType=VARCHAR}, 
+      #{localnum,jdbcType=VARCHAR}, #{localname,jdbcType=VARCHAR}, #{localtype,jdbcType=INTEGER}, 
+      #{productnum,jdbcType=VARCHAR}, #{barcode,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, 
+      #{batchnum,jdbcType=VARCHAR}, #{num,jdbcType=DOUBLE}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{createuser,jdbcType=VARCHAR}, #{createname,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CloneTemp" >
+    insert into clone_temp
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="cloneid != null" >
+        CloneID,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sn != null" >
+        Sn,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="storagename != null" >
+        StorageName,
+      </if>
+      <if test="localnum != null" >
+        LocalNum,
+      </if>
+      <if test="localname != null" >
+        LocalName,
+      </if>
+      <if test="localtype != null" >
+        LocalType,
+      </if>
+      <if test="productnum != null" >
+        ProductNum,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="batchnum != null" >
+        BatchNum,
+      </if>
+      <if test="num != null" >
+        Num,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="createname != null" >
+        CreateName,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="cloneid != null" >
+        #{cloneid,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagename != null" >
+        #{storagename,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="localtype != null" >
+        #{localtype,jdbcType=INTEGER},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CloneTemp" >
+    update clone_temp
+    <set >
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="id != null" >
+        ID = #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null" >
+        Sn = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagename != null" >
+        StorageName = #{storagename,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        LocalNum = #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        LocalName = #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="localtype != null" >
+        LocalType = #{localtype,jdbcType=INTEGER},
+      </if>
+      <if test="productnum != null" >
+        ProductNum = #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        BatchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="num != null" >
+        Num = #{num,jdbcType=DOUBLE},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createname != null" >
+        CreateName = #{createname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where CloneID = #{cloneid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CloneTemp" >
+    update clone_temp
+    set OrderNum = #{ordernum,jdbcType=VARCHAR},
+      ID = #{id,jdbcType=INTEGER},
+      Sn = #{sn,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      StorageName = #{storagename,jdbcType=VARCHAR},
+      LocalNum = #{localnum,jdbcType=VARCHAR},
+      LocalName = #{localname,jdbcType=VARCHAR},
+      LocalType = #{localtype,jdbcType=INTEGER},
+      ProductNum = #{productnum,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      BatchNum = #{batchnum,jdbcType=VARCHAR},
+      Num = #{num,jdbcType=DOUBLE},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      CreateName = #{createname,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where CloneID = #{cloneid,jdbcType=INTEGER}
+  </update>
+</mapper>

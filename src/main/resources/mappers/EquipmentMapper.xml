@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.EquipmentMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Equipment" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SnNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EquipmentName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="EquipmentNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsImpower" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="Flag" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Status" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SnNum, EquipmentName, EquipmentNum, IsImpower, Flag, IsDelete, Status, CreateUser, 
+    CreateTime, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from equipment
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from equipment
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Equipment" >
+    insert into equipment (ID, SnNum, EquipmentName, 
+      EquipmentNum, IsImpower, Flag, 
+      IsDelete, Status, CreateUser, 
+      CreateTime, Remark)
+    values (#{id,jdbcType=INTEGER}, #{snnum,jdbcType=VARCHAR}, #{equipmentname,jdbcType=VARCHAR}, 
+      #{equipmentnum,jdbcType=VARCHAR}, #{isimpower,jdbcType=BIT}, #{flag,jdbcType=VARCHAR}, 
+      #{isdelete,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{createuser,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Equipment" >
+    insert into equipment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="snnum != null" >
+        SnNum,
+      </if>
+      <if test="equipmentname != null" >
+        EquipmentName,
+      </if>
+      <if test="equipmentnum != null" >
+        EquipmentNum,
+      </if>
+      <if test="isimpower != null" >
+        IsImpower,
+      </if>
+      <if test="flag != null" >
+        Flag,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="status != null" >
+        Status,
+      </if>
+      <if test="createuser != null" >
+        CreateUser,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="snnum != null" >
+        #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentname != null" >
+        #{equipmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentnum != null" >
+        #{equipmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isimpower != null" >
+        #{isimpower,jdbcType=BIT},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Equipment" >
+    update equipment
+    <set >
+      <if test="snnum != null" >
+        SnNum = #{snnum,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentname != null" >
+        EquipmentName = #{equipmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="equipmentnum != null" >
+        EquipmentNum = #{equipmentnum,jdbcType=VARCHAR},
+      </if>
+      <if test="isimpower != null" >
+        IsImpower = #{isimpower,jdbcType=BIT},
+      </if>
+      <if test="flag != null" >
+        Flag = #{flag,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="status != null" >
+        Status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="createuser != null" >
+        CreateUser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Equipment" >
+    update equipment
+    set SnNum = #{snnum,jdbcType=VARCHAR},
+      EquipmentName = #{equipmentname,jdbcType=VARCHAR},
+      EquipmentNum = #{equipmentnum,jdbcType=VARCHAR},
+      IsImpower = #{isimpower,jdbcType=BIT},
+      Flag = #{flag,jdbcType=VARCHAR},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      Status = #{status,jdbcType=INTEGER},
+      CreateUser = #{createuser,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

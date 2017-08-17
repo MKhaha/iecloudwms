@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.CheckDataMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.CheckData" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="OrderNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ProductName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="BatchNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalQty" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="FirstQty" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="SecondQty" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="DifQty" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="FirstUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SecondUser" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, OrderNum, LocalNum, LocalName, StorageNum, ProductNum, BarCode, ProductName, 
+    BatchNum, LocalQty, FirstQty, SecondQty, DifQty, FirstUser, SecondUser, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from check_data
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from check_data
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckData" >
+    insert into check_data (ID, OrderNum, LocalNum, 
+      LocalName, StorageNum, ProductNum, 
+      BarCode, ProductName, BatchNum, 
+      LocalQty, FirstQty, SecondQty, 
+      DifQty, FirstUser, SecondUser, 
+      CreateTime)
+    values (#{id,jdbcType=INTEGER}, #{ordernum,jdbcType=VARCHAR}, #{localnum,jdbcType=VARCHAR}, 
+      #{localname,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, #{productnum,jdbcType=VARCHAR}, 
+      #{barcode,jdbcType=VARCHAR}, #{productname,jdbcType=VARCHAR}, #{batchnum,jdbcType=VARCHAR}, 
+      #{localqty,jdbcType=DOUBLE}, #{firstqty,jdbcType=DOUBLE}, #{secondqty,jdbcType=DOUBLE}, 
+      #{difqty,jdbcType=DOUBLE}, #{firstuser,jdbcType=VARCHAR}, #{seconduser,jdbcType=VARCHAR}, 
+      #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckData" >
+    insert into check_data
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="ordernum != null" >
+        OrderNum,
+      </if>
+      <if test="localnum != null" >
+        LocalNum,
+      </if>
+      <if test="localname != null" >
+        LocalName,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="productnum != null" >
+        ProductNum,
+      </if>
+      <if test="barcode != null" >
+        BarCode,
+      </if>
+      <if test="productname != null" >
+        ProductName,
+      </if>
+      <if test="batchnum != null" >
+        BatchNum,
+      </if>
+      <if test="localqty != null" >
+        LocalQty,
+      </if>
+      <if test="firstqty != null" >
+        FirstQty,
+      </if>
+      <if test="secondqty != null" >
+        SecondQty,
+      </if>
+      <if test="difqty != null" >
+        DifQty,
+      </if>
+      <if test="firstuser != null" >
+        FirstUser,
+      </if>
+      <if test="seconduser != null" >
+        SecondUser,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="ordernum != null" >
+        #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localqty != null" >
+        #{localqty,jdbcType=DOUBLE},
+      </if>
+      <if test="firstqty != null" >
+        #{firstqty,jdbcType=DOUBLE},
+      </if>
+      <if test="secondqty != null" >
+        #{secondqty,jdbcType=DOUBLE},
+      </if>
+      <if test="difqty != null" >
+        #{difqty,jdbcType=DOUBLE},
+      </if>
+      <if test="firstuser != null" >
+        #{firstuser,jdbcType=VARCHAR},
+      </if>
+      <if test="seconduser != null" >
+        #{seconduser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckData" >
+    update check_data
+    <set >
+      <if test="ordernum != null" >
+        OrderNum = #{ordernum,jdbcType=VARCHAR},
+      </if>
+      <if test="localnum != null" >
+        LocalNum = #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        LocalName = #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="productnum != null" >
+        ProductNum = #{productnum,jdbcType=VARCHAR},
+      </if>
+      <if test="barcode != null" >
+        BarCode = #{barcode,jdbcType=VARCHAR},
+      </if>
+      <if test="productname != null" >
+        ProductName = #{productname,jdbcType=VARCHAR},
+      </if>
+      <if test="batchnum != null" >
+        BatchNum = #{batchnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localqty != null" >
+        LocalQty = #{localqty,jdbcType=DOUBLE},
+      </if>
+      <if test="firstqty != null" >
+        FirstQty = #{firstqty,jdbcType=DOUBLE},
+      </if>
+      <if test="secondqty != null" >
+        SecondQty = #{secondqty,jdbcType=DOUBLE},
+      </if>
+      <if test="difqty != null" >
+        DifQty = #{difqty,jdbcType=DOUBLE},
+      </if>
+      <if test="firstuser != null" >
+        FirstUser = #{firstuser,jdbcType=VARCHAR},
+      </if>
+      <if test="seconduser != null" >
+        SecondUser = #{seconduser,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.CheckData" >
+    update check_data
+    set OrderNum = #{ordernum,jdbcType=VARCHAR},
+      LocalNum = #{localnum,jdbcType=VARCHAR},
+      LocalName = #{localname,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      ProductNum = #{productnum,jdbcType=VARCHAR},
+      BarCode = #{barcode,jdbcType=VARCHAR},
+      ProductName = #{productname,jdbcType=VARCHAR},
+      BatchNum = #{batchnum,jdbcType=VARCHAR},
+      LocalQty = #{localqty,jdbcType=DOUBLE},
+      FirstQty = #{firstqty,jdbcType=DOUBLE},
+      SecondQty = #{secondqty,jdbcType=DOUBLE},
+      DifQty = #{difqty,jdbcType=DOUBLE},
+      FirstUser = #{firstuser,jdbcType=VARCHAR},
+      SecondUser = #{seconduser,jdbcType=VARCHAR},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

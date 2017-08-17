@@ -2,7 +2,7 @@
 <configuration scan="true" scanPeriod="60 seconds" debug="false">
 
     <property name="APP_Name" value="iecloudwms" />
-    <property name="LOG_HOME" value="E:\xieguotao\01.work\01.java\04.project\java_log" />
+    <property name="LOG_HOME" value="E:/xieguotao/01.work/01.java/04.project/java_log" />
 
     <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
         <encoding>UTF-8</encoding>
@@ -15,9 +15,9 @@
     </appender>
 
     <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>${LOG_HOME}\iecloudwms\iecloudwms.log</File>
+        <File>${LOG_HOME}/iecloudwms/iecloudwms.log</File>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <fileNamePattern>${LOG_HOME}\iecloudwms\iecloudwms.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
+            <fileNamePattern>${LOG_HOME}/iecloudwms/iecloudwms.log.%d{yyyy-MM-dd}.gz</fileNamePattern>
             <append>true</append>
             <maxHistory>10</maxHistory>
         </rollingPolicy>

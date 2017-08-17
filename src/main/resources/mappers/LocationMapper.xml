@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.LocationMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.Location" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="LocalNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalBarCode" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="LocalName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="StorageType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="LocalType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="Rack" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="RackLength" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Width" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Height" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="X" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Y" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="Z" jdbcType="DOUBLE" javaType="java.lang.Double" />
+      <arg column="UnitNum" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="UnitName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="IsForbid" jdbcType="BIT" javaType="java.lang.Boolean" />
+      <arg column="IsDefault" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="IsDelete" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="CreateTime" jdbcType="TIMESTAMP" javaType="java.util.Date" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, LocalNum, LocalBarCode, LocalName, StorageNum, StorageType, LocalType, Rack, 
+    RackLength, Width, Height, X, Y, Z, UnitNum, UnitName, Remark, IsForbid, IsDefault, 
+    IsDelete, CreateTime
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from location
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from location
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Location" >
+    insert into location (ID, LocalNum, LocalBarCode, 
+      LocalName, StorageNum, StorageType, 
+      LocalType, Rack, RackLength, 
+      Width, Height, X, Y, 
+      Z, UnitNum, UnitName, 
+      Remark, IsForbid, IsDefault, 
+      IsDelete, CreateTime)
+    values (#{id,jdbcType=INTEGER}, #{localnum,jdbcType=VARCHAR}, #{localbarcode,jdbcType=VARCHAR}, 
+      #{localname,jdbcType=VARCHAR}, #{storagenum,jdbcType=VARCHAR}, #{storagetype,jdbcType=INTEGER}, 
+      #{localtype,jdbcType=INTEGER}, #{rack,jdbcType=VARCHAR}, #{racklength,jdbcType=DOUBLE}, 
+      #{width,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE}, #{x,jdbcType=DOUBLE}, #{y,jdbcType=DOUBLE}, 
+      #{z,jdbcType=DOUBLE}, #{unitnum,jdbcType=VARCHAR}, #{unitname,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{isforbid,jdbcType=BIT}, #{isdefault,jdbcType=INTEGER}, 
+      #{isdelete,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Location" >
+    insert into location
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="localnum != null" >
+        LocalNum,
+      </if>
+      <if test="localbarcode != null" >
+        LocalBarCode,
+      </if>
+      <if test="localname != null" >
+        LocalName,
+      </if>
+      <if test="storagenum != null" >
+        StorageNum,
+      </if>
+      <if test="storagetype != null" >
+        StorageType,
+      </if>
+      <if test="localtype != null" >
+        LocalType,
+      </if>
+      <if test="rack != null" >
+        Rack,
+      </if>
+      <if test="racklength != null" >
+        RackLength,
+      </if>
+      <if test="width != null" >
+        Width,
+      </if>
+      <if test="height != null" >
+        Height,
+      </if>
+      <if test="x != null" >
+        X,
+      </if>
+      <if test="y != null" >
+        Y,
+      </if>
+      <if test="z != null" >
+        Z,
+      </if>
+      <if test="unitnum != null" >
+        UnitNum,
+      </if>
+      <if test="unitname != null" >
+        UnitName,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+      <if test="isforbid != null" >
+        IsForbid,
+      </if>
+      <if test="isdefault != null" >
+        IsDefault,
+      </if>
+      <if test="isdelete != null" >
+        IsDelete,
+      </if>
+      <if test="createtime != null" >
+        CreateTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="localnum != null" >
+        #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localbarcode != null" >
+        #{localbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null" >
+        #{storagetype,jdbcType=INTEGER},
+      </if>
+      <if test="localtype != null" >
+        #{localtype,jdbcType=INTEGER},
+      </if>
+      <if test="rack != null" >
+        #{rack,jdbcType=VARCHAR},
+      </if>
+      <if test="racklength != null" >
+        #{racklength,jdbcType=DOUBLE},
+      </if>
+      <if test="width != null" >
+        #{width,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null" >
+        #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="x != null" >
+        #{x,jdbcType=DOUBLE},
+      </if>
+      <if test="y != null" >
+        #{y,jdbcType=DOUBLE},
+      </if>
+      <if test="z != null" >
+        #{z,jdbcType=DOUBLE},
+      </if>
+      <if test="unitnum != null" >
+        #{unitnum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null" >
+        #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isforbid != null" >
+        #{isforbid,jdbcType=BIT},
+      </if>
+      <if test="isdefault != null" >
+        #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Location" >
+    update location
+    <set >
+      <if test="localnum != null" >
+        LocalNum = #{localnum,jdbcType=VARCHAR},
+      </if>
+      <if test="localbarcode != null" >
+        LocalBarCode = #{localbarcode,jdbcType=VARCHAR},
+      </if>
+      <if test="localname != null" >
+        LocalName = #{localname,jdbcType=VARCHAR},
+      </if>
+      <if test="storagenum != null" >
+        StorageNum = #{storagenum,jdbcType=VARCHAR},
+      </if>
+      <if test="storagetype != null" >
+        StorageType = #{storagetype,jdbcType=INTEGER},
+      </if>
+      <if test="localtype != null" >
+        LocalType = #{localtype,jdbcType=INTEGER},
+      </if>
+      <if test="rack != null" >
+        Rack = #{rack,jdbcType=VARCHAR},
+      </if>
+      <if test="racklength != null" >
+        RackLength = #{racklength,jdbcType=DOUBLE},
+      </if>
+      <if test="width != null" >
+        Width = #{width,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null" >
+        Height = #{height,jdbcType=DOUBLE},
+      </if>
+      <if test="x != null" >
+        X = #{x,jdbcType=DOUBLE},
+      </if>
+      <if test="y != null" >
+        Y = #{y,jdbcType=DOUBLE},
+      </if>
+      <if test="z != null" >
+        Z = #{z,jdbcType=DOUBLE},
+      </if>
+      <if test="unitnum != null" >
+        UnitNum = #{unitnum,jdbcType=VARCHAR},
+      </if>
+      <if test="unitname != null" >
+        UnitName = #{unitname,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="isforbid != null" >
+        IsForbid = #{isforbid,jdbcType=BIT},
+      </if>
+      <if test="isdefault != null" >
+        IsDefault = #{isdefault,jdbcType=INTEGER},
+      </if>
+      <if test="isdelete != null" >
+        IsDelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        CreateTime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.Location" >
+    update location
+    set LocalNum = #{localnum,jdbcType=VARCHAR},
+      LocalBarCode = #{localbarcode,jdbcType=VARCHAR},
+      LocalName = #{localname,jdbcType=VARCHAR},
+      StorageNum = #{storagenum,jdbcType=VARCHAR},
+      StorageType = #{storagetype,jdbcType=INTEGER},
+      LocalType = #{localtype,jdbcType=INTEGER},
+      Rack = #{rack,jdbcType=VARCHAR},
+      RackLength = #{racklength,jdbcType=DOUBLE},
+      Width = #{width,jdbcType=DOUBLE},
+      Height = #{height,jdbcType=DOUBLE},
+      X = #{x,jdbcType=DOUBLE},
+      Y = #{y,jdbcType=DOUBLE},
+      Z = #{z,jdbcType=DOUBLE},
+      UnitNum = #{unitnum,jdbcType=VARCHAR},
+      UnitName = #{unitname,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR},
+      IsForbid = #{isforbid,jdbcType=BIT},
+      IsDefault = #{isdefault,jdbcType=INTEGER},
+      IsDelete = #{isdelete,jdbcType=INTEGER},
+      CreateTime = #{createtime,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

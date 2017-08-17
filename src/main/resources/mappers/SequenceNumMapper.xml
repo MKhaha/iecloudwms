@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.ywgroup.iecloud.iecloudwms.dao.SequenceNumMapper" >
+  <resultMap id="BaseResultMap" type="com.ywgroup.iecloud.iecloudwms.pojo.SequenceNum" >
+    <constructor >
+      <idArg column="ID" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SN" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="TabName" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FirstType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="FirstRule" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FirstLength" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SecondType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="SecondRule" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="SecondLength" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ThirdType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="ThirdRule" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="ThirdLength" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="FourType" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="FourRule" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="FourLength" jdbcType="INTEGER" javaType="java.lang.Integer" />
+      <arg column="JoinChar" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Sample" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="CurrentValue" jdbcType="VARCHAR" javaType="java.lang.String" />
+      <arg column="Remark" jdbcType="VARCHAR" javaType="java.lang.String" />
+    </constructor>
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, SN, TabName, FirstType, FirstRule, FirstLength, SecondType, SecondRule, SecondLength, 
+    ThirdType, ThirdRule, ThirdLength, FourType, FourRule, FourLength, JoinChar, Sample, 
+    CurrentValue, Remark
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from sequence_num
+    where ID = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from sequence_num
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SequenceNum" >
+    insert into sequence_num (ID, SN, TabName, 
+      FirstType, FirstRule, FirstLength, 
+      SecondType, SecondRule, SecondLength, 
+      ThirdType, ThirdRule, ThirdLength, 
+      FourType, FourRule, FourLength, 
+      JoinChar, Sample, CurrentValue, 
+      Remark)
+    values (#{id,jdbcType=INTEGER}, #{sn,jdbcType=VARCHAR}, #{tabname,jdbcType=VARCHAR}, 
+      #{firsttype,jdbcType=INTEGER}, #{firstrule,jdbcType=VARCHAR}, #{firstlength,jdbcType=INTEGER}, 
+      #{secondtype,jdbcType=INTEGER}, #{secondrule,jdbcType=VARCHAR}, #{secondlength,jdbcType=INTEGER}, 
+      #{thirdtype,jdbcType=INTEGER}, #{thirdrule,jdbcType=VARCHAR}, #{thirdlength,jdbcType=INTEGER}, 
+      #{fourtype,jdbcType=INTEGER}, #{fourrule,jdbcType=VARCHAR}, #{fourlength,jdbcType=INTEGER}, 
+      #{joinchar,jdbcType=VARCHAR}, #{sample,jdbcType=VARCHAR}, #{currentvalue,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SequenceNum" >
+    insert into sequence_num
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        ID,
+      </if>
+      <if test="sn != null" >
+        SN,
+      </if>
+      <if test="tabname != null" >
+        TabName,
+      </if>
+      <if test="firsttype != null" >
+        FirstType,
+      </if>
+      <if test="firstrule != null" >
+        FirstRule,
+      </if>
+      <if test="firstlength != null" >
+        FirstLength,
+      </if>
+      <if test="secondtype != null" >
+        SecondType,
+      </if>
+      <if test="secondrule != null" >
+        SecondRule,
+      </if>
+      <if test="secondlength != null" >
+        SecondLength,
+      </if>
+      <if test="thirdtype != null" >
+        ThirdType,
+      </if>
+      <if test="thirdrule != null" >
+        ThirdRule,
+      </if>
+      <if test="thirdlength != null" >
+        ThirdLength,
+      </if>
+      <if test="fourtype != null" >
+        FourType,
+      </if>
+      <if test="fourrule != null" >
+        FourRule,
+      </if>
+      <if test="fourlength != null" >
+        FourLength,
+      </if>
+      <if test="joinchar != null" >
+        JoinChar,
+      </if>
+      <if test="sample != null" >
+        Sample,
+      </if>
+      <if test="currentvalue != null" >
+        CurrentValue,
+      </if>
+      <if test="remark != null" >
+        Remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="sn != null" >
+        #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null" >
+        #{tabname,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttype != null" >
+        #{firsttype,jdbcType=INTEGER},
+      </if>
+      <if test="firstrule != null" >
+        #{firstrule,jdbcType=VARCHAR},
+      </if>
+      <if test="firstlength != null" >
+        #{firstlength,jdbcType=INTEGER},
+      </if>
+      <if test="secondtype != null" >
+        #{secondtype,jdbcType=INTEGER},
+      </if>
+      <if test="secondrule != null" >
+        #{secondrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secondlength != null" >
+        #{secondlength,jdbcType=INTEGER},
+      </if>
+      <if test="thirdtype != null" >
+        #{thirdtype,jdbcType=INTEGER},
+      </if>
+      <if test="thirdrule != null" >
+        #{thirdrule,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdlength != null" >
+        #{thirdlength,jdbcType=INTEGER},
+      </if>
+      <if test="fourtype != null" >
+        #{fourtype,jdbcType=INTEGER},
+      </if>
+      <if test="fourrule != null" >
+        #{fourrule,jdbcType=VARCHAR},
+      </if>
+      <if test="fourlength != null" >
+        #{fourlength,jdbcType=INTEGER},
+      </if>
+      <if test="joinchar != null" >
+        #{joinchar,jdbcType=VARCHAR},
+      </if>
+      <if test="sample != null" >
+        #{sample,jdbcType=VARCHAR},
+      </if>
+      <if test="currentvalue != null" >
+        #{currentvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SequenceNum" >
+    update sequence_num
+    <set >
+      <if test="sn != null" >
+        SN = #{sn,jdbcType=VARCHAR},
+      </if>
+      <if test="tabname != null" >
+        TabName = #{tabname,jdbcType=VARCHAR},
+      </if>
+      <if test="firsttype != null" >
+        FirstType = #{firsttype,jdbcType=INTEGER},
+      </if>
+      <if test="firstrule != null" >
+        FirstRule = #{firstrule,jdbcType=VARCHAR},
+      </if>
+      <if test="firstlength != null" >
+        FirstLength = #{firstlength,jdbcType=INTEGER},
+      </if>
+      <if test="secondtype != null" >
+        SecondType = #{secondtype,jdbcType=INTEGER},
+      </if>
+      <if test="secondrule != null" >
+        SecondRule = #{secondrule,jdbcType=VARCHAR},
+      </if>
+      <if test="secondlength != null" >
+        SecondLength = #{secondlength,jdbcType=INTEGER},
+      </if>
+      <if test="thirdtype != null" >
+        ThirdType = #{thirdtype,jdbcType=INTEGER},
+      </if>
+      <if test="thirdrule != null" >
+        ThirdRule = #{thirdrule,jdbcType=VARCHAR},
+      </if>
+      <if test="thirdlength != null" >
+        ThirdLength = #{thirdlength,jdbcType=INTEGER},
+      </if>
+      <if test="fourtype != null" >
+        FourType = #{fourtype,jdbcType=INTEGER},
+      </if>
+      <if test="fourrule != null" >
+        FourRule = #{fourrule,jdbcType=VARCHAR},
+      </if>
+      <if test="fourlength != null" >
+        FourLength = #{fourlength,jdbcType=INTEGER},
+      </if>
+      <if test="joinchar != null" >
+        JoinChar = #{joinchar,jdbcType=VARCHAR},
+      </if>
+      <if test="sample != null" >
+        Sample = #{sample,jdbcType=VARCHAR},
+      </if>
+      <if test="currentvalue != null" >
+        CurrentValue = #{currentvalue,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null" >
+        Remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ywgroup.iecloud.iecloudwms.pojo.SequenceNum" >
+    update sequence_num
+    set SN = #{sn,jdbcType=VARCHAR},
+      TabName = #{tabname,jdbcType=VARCHAR},
+      FirstType = #{firsttype,jdbcType=INTEGER},
+      FirstRule = #{firstrule,jdbcType=VARCHAR},
+      FirstLength = #{firstlength,jdbcType=INTEGER},
+      SecondType = #{secondtype,jdbcType=INTEGER},
+      SecondRule = #{secondrule,jdbcType=VARCHAR},
+      SecondLength = #{secondlength,jdbcType=INTEGER},
+      ThirdType = #{thirdtype,jdbcType=INTEGER},
+      ThirdRule = #{thirdrule,jdbcType=VARCHAR},
+      ThirdLength = #{thirdlength,jdbcType=INTEGER},
+      FourType = #{fourtype,jdbcType=INTEGER},
+      FourRule = #{fourrule,jdbcType=VARCHAR},
+      FourLength = #{fourlength,jdbcType=INTEGER},
+      JoinChar = #{joinchar,jdbcType=VARCHAR},
+      Sample = #{sample,jdbcType=VARCHAR},
+      CurrentValue = #{currentvalue,jdbcType=VARCHAR},
+      Remark = #{remark,jdbcType=VARCHAR}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
